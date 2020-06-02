@@ -10,7 +10,7 @@ public class WaPartnerController {
 	
 	@GetMapping("")
 	public String getPartner() {
-		return "partner";
+		return "I m partner";
 	}
 
 }

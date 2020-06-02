@@ -1,28 +1,34 @@
 package com.nra.wa.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.client.RestTemplate;
 
 import com.nra.wa.models.DbInfo;
+import com.nra.wa.service.DbService;
+import com.nra.wa.service.PartnerService;
 
 @RestController
-@RequestMapping("/db")
+@RequestMapping("/services")
 public class WaController {
 	
 	@Autowired
-	private RestTemplate restTemplate;
+	private DbService dbService;
 	
-	@Value("${db.url}")
-	private String url;
+	@Autowired
+	private PartnerService partnerService;
 	
-	@GetMapping("/{dbId}")
+
+	
+	@GetMapping("/database/{dbId}")
 	public DbInfo getDbInfo(@PathVariable("dbId") String dbId) {
-		DbInfo dbInfo=restTemplate.getForObject(url+"/"+dbId,DbInfo.class);
-		return dbInfo;
+		return dbService.getDbInfo(dbId);
+	}
+	
+	@GetMapping("/WA-partner")
+	public String getFromPartner() {
+		return partnerService.getFromPartner();
 	}
 }
