@@ -12,9 +12,15 @@ public class WaApplication {
 		SpringApplication.run(WaApplication.class, args);
 	}
 	
+//	@Bean
+//	public RestTemplate getRestTemplateForResponseErrorHandler() {
+//		return new RestTemplateBuilder()
+//				.errorHandler(new RestTemplateResponseErrorHandler())
+//				.build();
+//	}
+	
 	@Bean
-	public RestTemplate getRestTemplate() {
+	public RestTemplate getRestTemplate(){
 		return new RestTemplate();
 	}
-
 }

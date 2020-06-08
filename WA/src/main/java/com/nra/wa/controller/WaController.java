@@ -27,8 +27,5 @@ public class WaController {
 		HttpHeaders header=new HttpHeaders();
 		header.add("book", "recieved");
 		return new ResponseEntity<>(dbService.getBooks(author,count),header,HttpStatus.ACCEPTED);
-	}
-	
-	
-	
+	}	
 }
