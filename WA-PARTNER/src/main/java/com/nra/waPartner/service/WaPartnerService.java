@@ -15,7 +15,7 @@ public class WaPartnerService {
 
 	public List<Book> getBooks(String author,int count) {
 		List<Book> books=waPartnerRepo.findTopCountByAuthorOrderByTitle(author,count);
-		waPartnerRepo.deleteTopCountByAuthorOrderByTitle(author,count);
+		//waPartnerRepo.deleteTopCountByAuthorOrderByTitle(author,count);
 		return books;
 
 	}
