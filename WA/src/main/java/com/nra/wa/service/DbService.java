@@ -7,7 +7,6 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
-import com.nra.wa.ErrorHandler.RestTemplateResponseErrorHandler;
 import com.nra.wa.Exception.StockNotAvailableException;
 import com.nra.wa.models.Book;
 
@@ -17,6 +16,8 @@ public class DbService {
 
 	@Autowired
 	private RestTemplate restTemplate;
+	
+
 	
 	@Autowired
 	private PartnerService partnerService;
@@ -28,9 +29,7 @@ public class DbService {
 
 
 	public List<Book> getBooks(String author, int count) throws StockNotAvailableException{
-		restTemplate.setErrorHandler(new RestTemplateResponseErrorHandler());
 		int cnt=restTemplate.getForObject(dburl+"/"+author+"/count", Integer.class);
-		System.out.println(cnt);
 		if(cnt>=count) {
 			return restTemplate.getForObject(dburl+"/"+author+"/"+count, List.class);
 		}

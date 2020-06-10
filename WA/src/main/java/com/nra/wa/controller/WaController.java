@@ -4,7 +4,6 @@ package com.nra.wa.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -13,19 +12,44 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.nra.wa.models.Book;
+import com.nra.wa.service.AlertService;
 import com.nra.wa.service.DbService;
+import com.nra.wa.service.OrderService;
+import com.nra.wa.service.PartnerService;
 
 @RestController
-@RequestMapping("/WA/Books")
+@RequestMapping("/WA")
 public class WaController {
+	
+	@Autowired
+	private OrderService orderService;
 	
 	@Autowired
 	private DbService dbService;
 	
-	@GetMapping("/{author}/{count}")
+	@Autowired
+	private PartnerService partnerService;
+	@Autowired
+	private AlertService alertService;
+	
+	@GetMapping("/orders")
+	public ResponseEntity<String> getOrderService(){
+		return orderService.getOrderService();
+	}
+	
+	
+	@GetMapping("/orders/Books/{author}/{count}")
 	public ResponseEntity<List<Book>> getBooks(@PathVariable("author") String author,@PathVariable("count") int count){
-		HttpHeaders header=new HttpHeaders();
-		header.add("book", "recieved");
-		return new ResponseEntity<>(dbService.getBooks(author,count),header,HttpStatus.ACCEPTED);
+		return new ResponseEntity<>(dbService.getBooks(author,count),HttpStatus.ACCEPTED);
 	}	
+	@GetMapping("/getAlert")
+	public String getAlert() {
+		return alertService.getAlert();
+		
+	}
+	
+	@GetMapping("/payment/isUpORDown")
+	public ResponseEntity<String> isUpOrDown() {
+		return partnerService.isUpOrDown();
+	}
 }
