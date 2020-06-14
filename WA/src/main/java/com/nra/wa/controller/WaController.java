@@ -48,8 +48,10 @@ public class WaController {
 		
 	}
 	
-	@GetMapping("/payment/isUpORDown")
+	@GetMapping("/payment")
 	public ResponseEntity<String> isUpOrDown() {
 		return partnerService.isUpOrDown();
 	}
+	
+	
 }

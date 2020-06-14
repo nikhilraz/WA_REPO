@@ -15,22 +15,19 @@ import org.springframework.core.Ordered;
 import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Component;
 
-import ch.qos.logback.classic.Logger;
 
 @Component
 @Order(Ordered.HIGHEST_PRECEDENCE +3)
 public class RequestResponseLoggingFilter implements Filter {
 
-	private Logger Log=(Logger) LoggerFactory.getLogger(TransactionFilter.class);
+	private static final org.slf4j.Logger Log= LoggerFactory.getLogger(RequestResponseLoggingFilter.class);
 	@Override
 	public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain)
 			throws IOException, ServletException {
 		HttpServletRequest httpServletRequest=(HttpServletRequest)request;
 		HttpServletResponse httpServletResponse=(HttpServletResponse)response;
-		Log.info("Logging Request  {} : {}", httpServletRequest.getMethod(), 
-		          httpServletRequest.getRequestURI());
 		chain.doFilter(httpServletRequest, httpServletResponse);
-		Log.info("HttpStatus: {}", httpServletResponse.getStatus());
+		Log.info("{} ", httpServletResponse.getStatus());
 		
 	}
 
