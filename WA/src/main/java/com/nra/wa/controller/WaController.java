@@ -49,8 +49,8 @@ public class WaController {
 	}
 	
 	@GetMapping("/payment")
-	public ResponseEntity<String> isUpOrDown() {
-		return partnerService.isUpOrDown();
+	public ResponseEntity<String> getPartnerService() {
+		return partnerService.getPartnerService();
 	}
 	
 	

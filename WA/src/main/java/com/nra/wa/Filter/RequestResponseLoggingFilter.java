@@ -27,6 +27,7 @@ public class RequestResponseLoggingFilter implements Filter {
 		HttpServletRequest httpServletRequest=(HttpServletRequest)request;
 		HttpServletResponse httpServletResponse=(HttpServletResponse)response;
 		chain.doFilter(httpServletRequest, httpServletResponse);
+		System.out.println(httpServletResponse.getStatus());
 		Log.info("{} ", httpServletResponse.getStatus());
 		
 	}

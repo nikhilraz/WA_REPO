@@ -6,6 +6,7 @@ import org.springframework.http.HttpStatus.Series;
 import org.springframework.http.client.ClientHttpResponse;
 import org.springframework.web.client.ResponseErrorHandler;
 
+import com.nra.wa.Exception.PartnerDownException;
 import com.nra.wa.Exception.StockNotAvailableException;
 
 public class RestTemplateResponseErrorHandler implements ResponseErrorHandler{
@@ -21,7 +22,7 @@ public class RestTemplateResponseErrorHandler implements ResponseErrorHandler{
 	public void handleError(ClientHttpResponse response) throws IOException {
 		if(response.getStatusCode().is5xxServerError()) {
 			System.out.println(response.getRawStatusCode());
-			throw new StockNotAvailableException(response.getStatusText()+" "+response.getRawStatusCode());
+			throw new PartnerDownException(response.getStatusText()+" "+response.getRawStatusCode());
 		}
 		if(response.getStatusCode().is4xxClientError()) {
 			System.out.println("4xx");
@@ -29,16 +30,6 @@ public class RestTemplateResponseErrorHandler implements ResponseErrorHandler{
 		}
 
 	}
-//	static class CustomException extends IOException{
-//		/**
-//		 * 
-//		 */
-//		private static final long serialVersionUID = 1L;
-//
-//		public CustomException(String msg) {
-//			super(msg);
-//			System.out.println(msg);
-//		}
-//	}
+
 
 }

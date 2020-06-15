@@ -38,7 +38,7 @@ public class WaApplication {
 	public FilterRegistrationBean<MetricFilter> getMetricFilter() {
 	    FilterRegistrationBean<MetricFilter> registrationBean = new FilterRegistrationBean<>();
 	    registrationBean.setFilter(new MetricFilter());
-	    registrationBean.setUrlPatterns(Arrays.asList("/WA/payment/isUpORDown"));
+	    registrationBean.setUrlPatterns(Arrays.asList("/WA/payment"));
 	    registrationBean.setOrder(Ordered.HIGHEST_PRECEDENCE +2);
 	    return registrationBean;
 	}

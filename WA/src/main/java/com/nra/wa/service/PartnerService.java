@@ -10,8 +10,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
+import com.nra.wa.Exception.PartnerDownException;
 import com.nra.wa.models.Book;
-import com.nra.wa.service.Exception.PartnerDownException;
 
 @Service
 public class PartnerService {
@@ -27,21 +27,15 @@ public class PartnerService {
 	private Random rand;
 
 	public List<Book> getBooks(String author,int count) {
-		return restTemplate.getForObject(partnerurl+"/"+author+"/"+count, List.class);
+		return restTemplate.getForObject(partnerurl+"/"+"Books/"+author+"/"+count, List.class);
 
 	}
 
 
 	
-	public ResponseEntity<String> isUpOrDown() throws PartnerDownException {
-		int f=rand.nextInt(4);
-		if(f==0||f==1|f==2) {
-			throw new PartnerDownException("Partner is down,try again later");
-		}
-		else
-		{
-			return new ResponseEntity<>("Partner Up",HttpStatus.OK);
-		}
+	public ResponseEntity<String> getPartnerService() throws PartnerDownException {
+		return restTemplate.getForEntity(partnerurl+"/payment", String.class);
+		
 	}
 	
 	
