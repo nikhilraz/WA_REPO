@@ -50,7 +50,8 @@ public class WaController {
 	
 	@GetMapping("/payment")
 	public ResponseEntity<String> getPartnerService() {
-		return partnerService.getPartnerService();
+	return partnerService.getPartnerService();
+	//	return new ResponseEntity<>("hey",HttpStatus.ACCEPTED);
 	}
 	
 	

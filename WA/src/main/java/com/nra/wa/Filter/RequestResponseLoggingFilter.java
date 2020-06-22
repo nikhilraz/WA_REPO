@@ -1,9 +1,12 @@
 package com.nra.wa.Filter;
 
 import java.io.IOException;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 
 import javax.servlet.Filter;
 import javax.servlet.FilterChain;
+import javax.servlet.FilterConfig;
 import javax.servlet.ServletException;
 import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
@@ -14,12 +17,25 @@ import org.slf4j.LoggerFactory;
 import org.springframework.core.Ordered;
 import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Component;
+import org.springframework.web.context.support.WebApplicationContextUtils;
+
+import com.nra.wa.service.MetricService;
+//import com.nra.wa.service.ProducerService;
+import com.nra.wa.service.ProducerService;
 
 
 @Component
-@Order(Ordered.HIGHEST_PRECEDENCE +3)
+@Order(Ordered.HIGHEST_PRECEDENCE +1)
 public class RequestResponseLoggingFilter implements Filter {
 
+	private ProducerService producerService ;
+	 @Override
+	    public void init(FilterConfig config) throws ServletException {
+	        producerService = (ProducerService) WebApplicationContextUtils
+	         .getRequiredWebApplicationContext(config.getServletContext())
+	         .getBean("producerService");
+	    }
+	
 	private static final org.slf4j.Logger Log= LoggerFactory.getLogger(RequestResponseLoggingFilter.class);
 	@Override
 	public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain)
@@ -27,8 +43,13 @@ public class RequestResponseLoggingFilter implements Filter {
 		HttpServletRequest httpServletRequest=(HttpServletRequest)request;
 		HttpServletResponse httpServletResponse=(HttpServletResponse)response;
 		chain.doFilter(httpServletRequest, httpServletResponse);
-		System.out.println(httpServletResponse.getStatus());
-		Log.info("{} ", httpServletResponse.getStatus());
+		
+		LocalDateTime localDateTime=LocalDateTime.now();
+		DateTimeFormatter formatter=DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+		String ldt=localDateTime.format(formatter);
+		LocalDateTime dateTime=LocalDateTime.parse(ldt,formatter);
+		Log.info("{} {}", httpServletResponse.getStatus(),ldt);
+		producerService.produceMessage(httpServletResponse.getStatus(),dateTime);
 		
 	}
 

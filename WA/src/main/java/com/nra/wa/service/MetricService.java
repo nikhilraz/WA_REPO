@@ -29,20 +29,20 @@ public class MetricService {
 	}
 	
 	
-	@Scheduled(fixedDelay = 10000,initialDelay = 5000)
-    private void exportMetrics() {
-		System.out.println("Scheduled-------------------");
-		if(statusList.size()>0) {
-		for(int x:statusList)
-		{
-			Status s=new Status();
-			s.setStatus(x);
-			metricRepo.save(s);
-		}
-			statusList.clear();
-		}
-		
-	}
+//	@Scheduled(fixedDelay = 10000,initialDelay = 5000)
+//    private void exportMetrics() {
+//		System.out.println("Scheduled-------------------");
+//		if(statusList.size()>0) {
+//		for(int x:statusList)
+//		{
+//			Status s=new Status();
+//			s.setStatus(x);
+//			//metricRepo.save(s);
+//		}
+//			statusList.clear();
+//		}
+//		
+//	}
 	
 	
 	

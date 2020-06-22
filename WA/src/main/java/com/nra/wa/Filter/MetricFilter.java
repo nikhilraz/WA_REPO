@@ -35,8 +35,8 @@ public class MetricFilter implements Filter {
 	public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain)
 			throws IOException, ServletException {
 		chain.doFilter((HttpServletRequest)request,(HttpServletResponse) response);
-		System.out.println(metricService);
-		metricService.addStatus(((HttpServletResponse)response).getStatus());	
+	//	System.out.println(metricService);
+		//metricService.addStatus(((HttpServletResponse)response).getStatus());	
 	}
 
 }

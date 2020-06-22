@@ -21,11 +21,11 @@ public class RestTemplateResponseErrorHandler implements ResponseErrorHandler{
 	@Override
 	public void handleError(ClientHttpResponse response) throws IOException {
 		if(response.getStatusCode().is5xxServerError()) {
-			System.out.println(response.getRawStatusCode());
+			//System.out.println(response.getRawStatusCode());
 			throw new PartnerDownException(response.getStatusText()+" "+response.getRawStatusCode());
 		}
 		if(response.getStatusCode().is4xxClientError()) {
-			System.out.println("4xx");
+			//System.out.println("4xx");
 			throw new StockNotAvailableException(response.getStatusText()+" "+response.getRawStatusCode());
 		}
 

@@ -26,10 +26,10 @@ public class WaPartnerService {
 	}
 
 	public ResponseEntity<String> getPartnerService()  {
-		System.out.println("in partner");
+		//System.out.println("in partner");
 		int f=rand.nextInt(4);
 		if(f==0) {
-			return new ResponseEntity<>("SERVER DOWN",HttpStatus.INTERNAL_SERVER_ERROR);
+			return new ResponseEntity<>("SERVER DOWN",HttpStatus.SERVICE_UNAVAILABLE);
 		}
 		else if(f==1) {
 			return new ResponseEntity<>("Not found",HttpStatus.NOT_FOUND);
