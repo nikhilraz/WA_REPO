@@ -14,19 +14,12 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.slf4j.LoggerFactory;
-import org.springframework.core.Ordered;
-import org.springframework.core.annotation.Order;
-import org.springframework.stereotype.Component;
 import org.springframework.web.context.support.WebApplicationContextUtils;
 
-import com.nra.wa.service.MetricService;
-//import com.nra.wa.service.ProducerService;
 import com.nra.wa.service.ProducerService;
 
 
-@Component
-@Order(Ordered.HIGHEST_PRECEDENCE +1)
-public class RequestResponseLoggingFilter implements Filter {
+public class RegistrationFilter implements Filter {
 
 	private ProducerService producerService ;
 	 @Override
@@ -36,7 +29,7 @@ public class RequestResponseLoggingFilter implements Filter {
 	         .getBean("producerService");
 	    }
 	
-	private static final org.slf4j.Logger Log= LoggerFactory.getLogger(RequestResponseLoggingFilter.class);
+	private static final org.slf4j.Logger Log= LoggerFactory.getLogger(RegistrationFilter.class);
 	@Override
 	public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain)
 			throws IOException, ServletException {
@@ -49,7 +42,7 @@ public class RequestResponseLoggingFilter implements Filter {
 		String ldt=localDateTime.format(formatter);
 		LocalDateTime dateTime=LocalDateTime.parse(ldt,formatter);
 		Log.info("{} {}", httpServletResponse.getStatus(),ldt);
-		producerService.produceMessage(httpServletResponse.getStatus(),dateTime);
+		producerService.produceMessage("RegistrationMQ",httpServletResponse.getStatus(),dateTime);
 		
 	}
 

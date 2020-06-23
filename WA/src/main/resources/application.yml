@@ -21,7 +21,6 @@ window.size: 5000
 initial.delay: 10000
 threshold.percentage: 50
 
-
 httpconnpool:
   maxTotal: 10000
   defaultMaxPerRoute: 10000

@@ -30,7 +30,9 @@ import org.springframework.util.CollectionUtils;
 import org.springframework.web.client.RestTemplate;
 
 import com.nra.wa.ErrorHandler.RestTemplateResponseErrorHandler;
-import com.nra.wa.Filter.MetricFilter;
+import com.nra.wa.Filter.RegistrationFilter;
+import com.nra.wa.Filter.TransactionFilter;
+import com.nra.wa.Filter.TransactionHistoryFilter;
 import com.nra.wa.configuration.HttpHostsConfiguration;
 import com.nra.wa.configuration.HttpHostsConfiguration.HttpHostConfiguration;
 
@@ -42,12 +44,6 @@ public class WaApplication {
 		SpringApplication.run(WaApplication.class, args);
 	}
 	
-//	@Bean
-//	public RestTemplate getRestTemplateForResponseErrorHandler() {
-//		return new RestTemplateBuilder()
-//				.errorHandler(new RestTemplateResponseErrorHandler())
-//				.build();
-//	}
 
 	@Bean
 	public Random getRandom() {
@@ -61,13 +57,30 @@ public class WaApplication {
 	  private HttpHostsConfiguration httpHostConfiguration;
 	
 	@Bean
-	public FilterRegistrationBean<MetricFilter> getMetricFilter() {
-	    FilterRegistrationBean<MetricFilter> registrationBean = new FilterRegistrationBean<>();
-	    registrationBean.setFilter(new MetricFilter());
-	    registrationBean.setUrlPatterns(Arrays.asList("/WA/payment"));
-	    registrationBean.setOrder(Ordered.HIGHEST_PRECEDENCE +2);
+	public FilterRegistrationBean<TransactionHistoryFilter> getTransactionHistoryFilter() {
+	    FilterRegistrationBean<TransactionHistoryFilter> registrationBean = new FilterRegistrationBean<>();
+	    registrationBean.setFilter(new TransactionHistoryFilter());
+	    registrationBean.setUrlPatterns(Arrays.asList("/WA/TransactionHistory"));
+	    registrationBean.setOrder(Ordered.HIGHEST_PRECEDENCE +1);
 	    return registrationBean;
 	}
+	@Bean
+	public FilterRegistrationBean<TransactionFilter> getTransactionFilter() {
+	    FilterRegistrationBean<TransactionFilter> registrationBean = new FilterRegistrationBean<>();
+	    registrationBean.setFilter(new TransactionFilter());
+	    registrationBean.setUrlPatterns(Arrays.asList("/WA/Transaction"));
+	    registrationBean.setOrder(Ordered.HIGHEST_PRECEDENCE +1);
+	    return registrationBean;
+	}
+	@Bean
+	public FilterRegistrationBean<RegistrationFilter> getRegistrationFilter() {
+	    FilterRegistrationBean<RegistrationFilter> registrationBean = new FilterRegistrationBean<>();
+	    registrationBean.setFilter(new RegistrationFilter());
+	    registrationBean.setUrlPatterns(Arrays.asList("/WA/Registration"));
+	    registrationBean.setOrder(Ordered.HIGHEST_PRECEDENCE +1);
+	    return registrationBean;
+	}
+	
 	
 	@Bean
 	public PoolingHttpClientConnectionManager poolingHttpClientConnectionManager() {
