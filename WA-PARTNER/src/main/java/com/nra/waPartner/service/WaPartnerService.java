@@ -20,13 +20,11 @@ public class WaPartnerService {
 
 	public List<Book> getBooks(String author,int count) {
 		List<Book> books=waPartnerRepo.findTopCountByAuthorOrderByTitle(author,count);
-		//waPartnerRepo.deleteTopCountByAuthorOrderByTitle(author,count);
 		return books;
 
 	}
 
-	public ResponseEntity<String> getPartnerService()  {
-		//System.out.println("in partner");
+	public ResponseEntity<String> getTransactionService()  {
 		int f=rand.nextInt(4);
 		if(f==0) {
 			return new ResponseEntity<>("SERVER DOWN",HttpStatus.SERVICE_UNAVAILABLE);
@@ -39,4 +37,34 @@ public class WaPartnerService {
 			return new ResponseEntity<>("Partner Up",HttpStatus.ACCEPTED);
 		}
 	}
+	
+	public ResponseEntity<String> getRegistrationService()  {
+		int f=rand.nextInt(4);
+		if(f==0) {
+			return new ResponseEntity<>("SERVER DOWN",HttpStatus.SERVICE_UNAVAILABLE);
+		}
+		else if(f==1) {
+			return new ResponseEntity<>("Not found",HttpStatus.NOT_FOUND);
+		}
+		else
+		{
+			return new ResponseEntity<>("Partner Up",HttpStatus.ACCEPTED);
+		}
+	}
+	
+	public ResponseEntity<String> getTransactionHistoryService()  {
+		int f=rand.nextInt(4);
+		if(f==0) {
+			return new ResponseEntity<>("SERVER DOWN",HttpStatus.SERVICE_UNAVAILABLE);
+		}
+		else if(f==1) {
+			return new ResponseEntity<>("Not found",HttpStatus.NOT_FOUND);
+		}
+		else
+		{
+			return new ResponseEntity<>("Partner Up",HttpStatus.ACCEPTED);
+		}
+	}
+	
+	
 }

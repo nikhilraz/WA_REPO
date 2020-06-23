@@ -13,20 +13,17 @@ public class AlertService {
 
 	@Value("${threshold.percentage}")
 	private double thresholdPercentage;
-	public void CountsOfWindow(int successCount, int failureCount, LocalDateTime strtTime, LocalDateTime endTime) {
+	public void CountsOfWindow(String API,int successCount, int failureCount, LocalDateTime strtTime, LocalDateTime endTime) {
 		double down=(double)failureCount;
 		double up=(double)successCount;
 		double downPercentage=(double)(down/(up+down))*100.0;
 		if(downPercentage>=thresholdPercentage)
-			System.out.println(strtTime+"   DOWN   "+endTime);
+			System.out.println(API+" "+strtTime+"   DOWN   "+endTime);
 		else
-			System.out.println(strtTime+"   UP   "+endTime);
+			System.out.println(API+" "+strtTime+"   UP   "+endTime);
 		
 	}
 
-	public String getAlert() {
-		// TODO Auto-generated method stub
-		return null;
-	}
+
 
 }

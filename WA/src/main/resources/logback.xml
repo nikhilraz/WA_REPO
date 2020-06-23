@@ -1,29 +1,53 @@
 <configuration>
     <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
-        <!-- encoders are assigned the type
-             ch.qos.logback.classic.encoder.PatternLayoutEncoder by default -->
         <encoder>
             <pattern>%d{HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n</pattern>
         </encoder>
     </appender>
  
-    <appender name="FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
-    <file>test.log</file>
-    <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
-        <!--  rollover -->
-        <fileNamePattern>test.%d{yyyy-MM-dd}.log</fileNamePattern>
- 
-        <!-- keep 30 days' worth of history capped at 3GB total size -->
+    <appender name="Transaction" class="ch.qos.logback.core.rolling.RollingFileAppender">
+   	 <file>Transaction.log</file>
+       <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+        <fileNamePattern>Transaction.%d{yyyy-MM-dd}.log</fileNamePattern>
         <maxHistory>30</maxHistory>
-        <totalSizeCap>3GB</totalSizeCap>
-    </rollingPolicy>
-    <encoder>
+       	 <totalSizeCap>3GB</totalSizeCap>
+   		</rollingPolicy>
+   	 <encoder>
         <pattern>%msg%n</pattern>
-    </encoder>
-</appender> 
-     
-    <logger name="com.nra.wa.Filter.RequestResponseLoggingFilter" level="INFO" additivity="false"> 
-        <appender-ref ref="FILE" /> 
+  	  </encoder>
+	</appender> 
+    <logger name="com.nra.wa.Filter.TransactionFilter" level="INFO" additivity="false"> 
+        <appender-ref ref="Transaction" /> 
+    </logger> 
+    
+    <appender name="TransactionHistory" class="ch.qos.logback.core.rolling.RollingFileAppender">
+   	 <file>TransactionHistory.log</file>
+       <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+        <fileNamePattern>TransactionHistory.%d{yyyy-MM-dd}.log</fileNamePattern>
+        <maxHistory>30</maxHistory>
+       	 <totalSizeCap>3GB</totalSizeCap>
+   		</rollingPolicy>
+   	 <encoder>
+        <pattern>%msg%n</pattern>
+  	  </encoder>
+	</appender> 
+    <logger name="com.nra.wa.Filter.TransactionHistoryFilter" level="INFO" additivity="false"> 
+        <appender-ref ref="TransactionHistory" /> 
+    </logger> 
+    
+    <appender name="Registration" class="ch.qos.logback.core.rolling.RollingFileAppender">
+   	 <file>Registration.log</file>
+       <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+        <fileNamePattern>Registration.%d{yyyy-MM-dd}.log</fileNamePattern>
+        <maxHistory>30</maxHistory>
+       	 <totalSizeCap>3GB</totalSizeCap>
+   		</rollingPolicy>
+   	 <encoder>
+        <pattern>%msg%n</pattern>
+  	  </encoder>
+	</appender> 
+    <logger name="com.nra.wa.Filter.RegistrationFilter" level="INFO" additivity="false"> 
+        <appender-ref ref="Registration" /> 
     </logger> 
  
     <root level="warn">

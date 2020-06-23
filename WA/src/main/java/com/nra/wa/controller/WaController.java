@@ -29,8 +29,6 @@ public class WaController {
 	
 	@Autowired
 	private PartnerService partnerService;
-	@Autowired
-	private AlertService alertService;
 	
 	@GetMapping("/orders")
 	public ResponseEntity<String> getOrderService(){
@@ -42,16 +40,20 @@ public class WaController {
 	public ResponseEntity<List<Book>> getBooks(@PathVariable("author") String author,@PathVariable("count") int count){
 		return new ResponseEntity<>(dbService.getBooks(author,count),HttpStatus.ACCEPTED);
 	}	
-	@GetMapping("/getAlert")
-	public String getAlert() {
-		return alertService.getAlert();
-		
+	
+	@GetMapping("/Transaction")
+	public ResponseEntity<String> getPartnerService() {
+	return partnerService.getTransactionService();
 	}
 	
-	@GetMapping("/payment")
-	public ResponseEntity<String> getPartnerService() {
-	return partnerService.getPartnerService();
-	//	return new ResponseEntity<>("hey",HttpStatus.ACCEPTED);
+	@GetMapping("/TransactionHistory")
+	public ResponseEntity<String> getTransactionHistoryService() {
+	return partnerService.getTransactionHistoryService();
+	}
+	
+	@GetMapping("/Registration")
+	public ResponseEntity<String> getRegistrationService() {
+	return partnerService.getRegistrationService();
 	}
 	
 	

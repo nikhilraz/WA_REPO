@@ -24,11 +24,21 @@ public class WaPartnerController {
 		return waPartnerService.getBooks(author,count);
 	}
 	
-	@GetMapping("/payment")
-	public ResponseEntity<String> getPartnerService(){
-		return waPartnerService.getPartnerService();
+	@GetMapping("/Transaction")
+	public ResponseEntity<String> getTransactionService(){
+		return waPartnerService.getTransactionService();
 	}
 	
+	
+	@GetMapping("/TransactionHistory")
+	public ResponseEntity<String> getTransactionHistory(){
+		return waPartnerService.getTransactionHistoryService();
+	}
+	
+	@GetMapping("/Registration")
+	public ResponseEntity<String> getRegistration(){
+		return waPartnerService.getRegistrationService();
+	}
 	
 	
 	

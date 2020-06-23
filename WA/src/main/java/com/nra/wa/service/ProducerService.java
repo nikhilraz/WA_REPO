@@ -15,7 +15,7 @@ public class ProducerService {
 	@Autowired
 	private JmsTemplate jmsTemplate;
 	
-	public void produceMessage(int statusCode,LocalDateTime localDateTime) throws JmsException {
-		jmsTemplate.convertAndSend("MQ", new Message(statusCode,localDateTime));
+	public void produceMessage(String MQ,int statusCode,LocalDateTime localDateTime) throws JmsException {
+		jmsTemplate.convertAndSend(MQ, new Message(statusCode,localDateTime));
 	}
 }

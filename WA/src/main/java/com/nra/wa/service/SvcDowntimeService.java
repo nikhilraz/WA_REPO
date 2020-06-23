@@ -12,8 +12,18 @@ public class SvcDowntimeService {
 
 	@Autowired
 	private Reducer reducer;
-	@JmsListener(destination = "MQ",containerFactory = "myFactory")
-	public void fetchAndPass(Message message) {
-		reducer.aggregate(message);
+	@JmsListener(destination = "TransactionMQ",containerFactory = "myFactory")
+	public void fetchAndPassTransactionResponses(Message message) {
+		reducer.aggregateTransactionResponse(message);
+	}
+	
+	@JmsListener(destination = "RegistrationMQ",containerFactory = "myFactory")
+	public void fetchAndPassRegistrationResponse(Message message) {
+		reducer.aggregateRegistrationResponse(message);
+	}
+	
+	@JmsListener(destination = "TransactionHistoryMQ",containerFactory = "myFactory")
+	public void fetchAndPassTransactionHistoryResponses(Message message) {
+		reducer.aggregateTransactionHistoryResponse(message);
 	}
 }

@@ -31,9 +31,16 @@ public class PartnerService {
 
 
 	
-	public ResponseEntity<String> getPartnerService()  {
-		return restTemplate.getForEntity(partnerurl+"/payment", String.class);
+	public ResponseEntity<String> getTransactionService()  {
+		return restTemplate.getForEntity(partnerurl+"/Transaction", String.class);
 		
+	}
+
+	public ResponseEntity<String> getTransactionHistoryService() {
+		return restTemplate.getForEntity(partnerurl+"/TransactionHistory", String.class);
+	}
+	public ResponseEntity<String> getRegistrationService() {
+		return restTemplate.getForEntity(partnerurl+"/Registration", String.class);
 	}
 	
 	
