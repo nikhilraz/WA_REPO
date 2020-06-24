@@ -23,7 +23,6 @@ public class WaController {
 	
 	
 	
-<<<<<<< HEAD
 	@GetMapping("/Transaction")
 	public ResponseEntity<String> getTransactionService() {
 	return partnerService.getTransactionService();
@@ -34,23 +33,6 @@ public class WaController {
 	return partnerService.getTransactionHistoryService();
 	}
 	
-=======
-	@GetMapping("/orders/Books/{author}/{count}")
-	public ResponseEntity<List<Book>> getBooks(@PathVariable("author") String author,@PathVariable("count") int count){
-		return new ResponseEntity<>(dbService.getBooks(author,count),HttpStatus.ACCEPTED);
-	}	
-	
-	@GetMapping("/Transaction")
-	public ResponseEntity<String> getPartnerService() {
-	return partnerService.getTransactionService();
-	}
-	
-	@GetMapping("/TransactionHistory")
-	public ResponseEntity<String> getTransactionHistoryService() {
-	return partnerService.getTransactionHistoryService();
-	}
-	
->>>>>>> d216c75b77bcfff504d19f49fb986700bdd8092f
 	@GetMapping("/Registration")
 	public ResponseEntity<String> getRegistrationService() {
 	return partnerService.getRegistrationService();
