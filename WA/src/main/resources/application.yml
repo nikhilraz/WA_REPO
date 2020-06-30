@@ -17,16 +17,16 @@ partner:
 
 management.endpoints.web.exposure.include: "*"
 
-window.size: 5000
-initial.delay: 10000
+window.size: 60000
+initial.delay: 64000
 threshold.percentage: 50
 
 httpconnpool:
-  maxTotal: 10000
-  defaultMaxPerRoute: 10000
+  maxTotal: 20000
+  defaultMaxPerRoute: 20000
   maxPerRoutes:
     -
       scheme: http
       host: localhost
       port: 9002
-      maxPerRoute: 10000
+      maxPerRoute: 20000

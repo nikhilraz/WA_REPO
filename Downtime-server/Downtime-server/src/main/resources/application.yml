@@ -1,0 +1,8 @@
+server.port: 9003
+transactionFilePath: C:\\Users\\HP\\Documents\\workspace-spring-tool-suite-4-4.6.1.RELEASE\\WA\\Transaction.log
+transactionHistoryFilePath: C:\\Users\\HP\\Documents\\workspace-spring-tool-suite-4-4.6.1.RELEASE\\WA\\TransactionHistory.log
+registrationFilePath: C:\\Users\\HP\\Documents\\workspace-spring-tool-suite-4-4.6.1.RELEASE\\WA\\Registration.log
+fixed.delay: 10000
+initial.delay: 10000
+threshold.percentage: 60
+jobs.enabled: true

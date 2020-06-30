@@ -13,12 +13,6 @@ public class WaPartnerService {
 	@Autowired
 	private Random rand;
 
-<<<<<<< HEAD
-=======
-	public List<Book> getBooks(String author,int count) {
-		List<Book> books=waPartnerRepo.findTopCountByAuthorOrderByTitle(author,count);
-		return books;
->>>>>>> d216c75b77bcfff504d19f49fb986700bdd8092f
 
 	public ResponseEntity<String> getTransactionService()  {
 		int f=rand.nextInt(4);
@@ -33,28 +27,7 @@ public class WaPartnerService {
 			return new ResponseEntity<>("Partner Up",HttpStatus.ACCEPTED);
 		}
 	}
-<<<<<<< HEAD
 	
-	public ResponseEntity<String> getRegistrationService()  {
-=======
-
-	public ResponseEntity<String> getTransactionService()  {
->>>>>>> d216c75b77bcfff504d19f49fb986700bdd8092f
-		int f=rand.nextInt(4);
-		if(f==0) {
-			return new ResponseEntity<>("SERVER DOWN",HttpStatus.SERVICE_UNAVAILABLE);
-		}
-		else if(f==1) {
-			return new ResponseEntity<>("Not found",HttpStatus.NOT_FOUND);
-		}
-		else
-		{
-			return new ResponseEntity<>("Partner Up",HttpStatus.ACCEPTED);
-		}
-	}
-	
-<<<<<<< HEAD
-=======
 	public ResponseEntity<String> getRegistrationService()  {
 		int f=rand.nextInt(4);
 		if(f==0) {
@@ -69,7 +42,6 @@ public class WaPartnerService {
 		}
 	}
 	
->>>>>>> d216c75b77bcfff504d19f49fb986700bdd8092f
 	public ResponseEntity<String> getTransactionHistoryService()  {
 		int f=rand.nextInt(4);
 		if(f==0) {

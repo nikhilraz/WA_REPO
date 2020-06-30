@@ -102,9 +102,9 @@ public class WaApplication {
 	  @Bean
 	  public RequestConfig requestConfig() {
 	    RequestConfig result = RequestConfig.custom()
-	      .setConnectionRequestTimeout(15000)
-	      .setConnectTimeout(15000)
-	      .setSocketTimeout(15000)
+	      .setConnectionRequestTimeout(120000)
+	      .setConnectTimeout(120000)
+	      .setSocketTimeout(120000)
 	      .build();
 	    return result;
 	  }

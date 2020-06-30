@@ -41,7 +41,7 @@ public class RegistrationFilter implements Filter {
 		DateTimeFormatter formatter=DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
 		String ldt=localDateTime.format(formatter);
 		LocalDateTime dateTime=LocalDateTime.parse(ldt,formatter);
-		Log.info("{} {}", httpServletResponse.getStatus(),ldt);
+		Log.info("{},{}", httpServletResponse.getStatus(),ldt);
 		producerService.produceMessage("RegistrationMQ",httpServletResponse.getStatus(),dateTime);
 		
 	}

@@ -22,22 +22,6 @@ public class WaPartnerController {
 		return waPartnerService.getTransactionService();
 	}
 	
-<<<<<<< HEAD
-	
-	@GetMapping("/TransactionHistory")
-	public ResponseEntity<String> getTransactionHistory(){
-		return waPartnerService.getTransactionHistoryService();
-=======
-	@GetMapping("/Transaction")
-	public ResponseEntity<String> getTransactionService(){
-		return waPartnerService.getTransactionService();
->>>>>>> d216c75b77bcfff504d19f49fb986700bdd8092f
-	}
-	
-	@GetMapping("/Registration")
-	public ResponseEntity<String> getRegistration(){
-		return waPartnerService.getRegistrationService();
-	}
 	
 	@GetMapping("/TransactionHistory")
 	public ResponseEntity<String> getTransactionHistory(){
