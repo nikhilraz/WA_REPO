@@ -56,6 +56,7 @@ public class WaApplication {
 	@Autowired
 	  private HttpHostsConfiguration httpHostConfiguration;
 	
+	//Filters for intercepting different API's Responses and write to corresponding logs
 	@Bean
 	public FilterRegistrationBean<TransactionHistoryFilter> getTransactionHistoryFilter() {
 	    FilterRegistrationBean<TransactionHistoryFilter> registrationBean = new FilterRegistrationBean<>();
