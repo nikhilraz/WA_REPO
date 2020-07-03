@@ -17,6 +17,7 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.jms.DefaultJmsListenerContainerFactoryConfigurer;
 import org.springframework.boot.web.servlet.FilterRegistrationBean;
+import org.springframework.cloud.client.circuitbreaker.EnableCircuitBreaker;
 import org.springframework.context.annotation.Bean;
 import org.springframework.core.Ordered;
 import org.springframework.http.client.HttpComponentsClientHttpRequestFactory;
@@ -39,6 +40,7 @@ import com.nra.wa.configuration.HttpHostsConfiguration.HttpHostConfiguration;
 @SpringBootApplication
 @EnableScheduling
 @EnableJms
+@EnableCircuitBreaker
 public class WaApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(WaApplication.class, args);

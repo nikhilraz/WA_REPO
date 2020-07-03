@@ -39,7 +39,7 @@ public class DownTimeService {
 		dateTimeFormatter=DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
 		ts=0;te=0;rs=0;re=0;ths=0;the=0;offset=70;
 	}
-	@Scheduled(fixedDelay=1000,initialDelay =0)
+	@Scheduled(fixedDelay=1000,initialDelay=20000)
 	private void fetchAndPassTransactionLog() {
 		RandomAccessFile randomAccessFile=null;
 		String response="";
@@ -68,7 +68,7 @@ public class DownTimeService {
 	}
 	
 	
-	@Scheduled(fixedDelay=1000,initialDelay =0)
+	@Scheduled(fixedDelay=1000,initialDelay=20000)
 	private void fetchAndPassTransactionHistoryLog() {
 		RandomAccessFile randomAccessFile=null;
 		String response="";
@@ -97,7 +97,7 @@ public class DownTimeService {
 	}
 	
 	
-	@Scheduled(fixedDelay=1000,initialDelay=0)
+	@Scheduled(fixedDelay=1000,initialDelay=20000)
 	private void fetchAndPassRegistrationLog() {
 		RandomAccessFile randomAccessFile=null;
 		String response="";
