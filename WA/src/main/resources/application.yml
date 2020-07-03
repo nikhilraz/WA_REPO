@@ -1,14 +1,5 @@
 server.port: 9001
-spring:
- datasource:
-   url: jdbc:mysql://localhost:3306/metricdb
-   username: root
-   password: nikhil98jaiswal@
-   driver-class-name: com.mysql.jdbc.Driver
- jpa:
-  hibernate.ddl-auto: update
-  generate-ddl: true
-  show-sql: true
+
   
 db:
  url: http://localhost:9000/WA-DB/Books
