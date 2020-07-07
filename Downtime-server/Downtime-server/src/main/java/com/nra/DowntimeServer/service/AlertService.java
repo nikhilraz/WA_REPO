@@ -12,7 +12,6 @@ import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
 
 import com.nra.DowntimeServer.models.Threshold;
-import com.nra.DowntimeServer.services.DbService;
 
 @Service
 public class AlertService {
